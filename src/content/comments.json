@@ -1,0 +1,14 @@
+[
+  {
+    "postId": "1",
+    "id": "1",
+    "author": "John Doe",
+    "content": "Great post!"
+  },
+  {
+    "postId": "1",
+    "id": "2",
+    "author": "Jane Smith",
+    "content": "I enjoyed reading this."
+  }
+]

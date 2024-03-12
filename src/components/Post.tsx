@@ -6,13 +6,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 
-interface PostProps {
-  post: {
-    id: string;
-    title: string;
-    content: string;
-  };
-}
+import { PostProps } from "@/models/Props";
 
 export default function Post({ post }: PostProps) {
   return (

@@ -13,3 +13,14 @@ export interface CommentProps {
   content: string;
   timestamp: string;
 }
+
+export interface CreateCommentProps {
+  postId: string;
+  author: string;
+  content: string;
+  timestamp: string;
+}
+
+export interface NewCommentProps {
+  postId: string;
+}

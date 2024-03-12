@@ -21,6 +21,8 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@posts/*": ["./src/posts/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@auth/*": ["./src/app/api/auth/[...nextauth]/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

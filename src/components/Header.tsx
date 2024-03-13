@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,7 +9,7 @@ import Link from "next/link";
 
 import { getServerSession } from "next-auth/next";
 
-import { options } from "../app/api/auth/[...nextauth]/options";
+import { options } from "@auth/options";
 
 interface HeaderProps {
   title: string;

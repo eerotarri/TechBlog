@@ -7,12 +7,14 @@ import {
 } from "@/models/Props";
 import { Button, Box, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { getClientSession } from "@lib/utils";
 import { generateCommentId } from "@lib/utils";
 
 function NewComment({ postId }: NewCommentProps) {
   const session = getClientSession();
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     content: "",
@@ -20,8 +22,9 @@ function NewComment({ postId }: NewCommentProps) {
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     session.then((session) => {
-      console.log("session found");
-      console.log(session?.user);
+      if (!session?.user) {
+        router.push("/api/auth/signin?callbackUrl=/post/" + postId);
+      }
     });
 
     const { name, value } = e.target;

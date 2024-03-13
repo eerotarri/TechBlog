@@ -3,16 +3,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 // import components
-import Header from "@components/Header";
 import Post from "@components/Post";
 
 // import assets
 import posts from "../content/posts.json";
 import { Grid } from "@mui/material";
-
-const summa = (a: number, b: number) => {
-  return a + b;
-};
 
 export default function Blog() {
   return (

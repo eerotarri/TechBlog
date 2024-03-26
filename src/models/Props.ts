@@ -1,9 +1,9 @@
 export interface PostProps {
-  post: {
-    id: string;
-    title: string;
-    content: string;
-  };
+  id: string;
+  title: string;
+  content: string;
+  author?: string;
+  timestamp?: string;
 }
 
 export interface CommentProps {
@@ -23,4 +23,8 @@ export interface CreateCommentProps {
 
 export interface NewCommentProps {
   postId: string;
+}
+
+export interface GetImageProps {
+  imageId: string;
 }

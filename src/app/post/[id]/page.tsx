@@ -16,13 +16,13 @@ import comments from "@/content/comments.json";
 import { options } from "@auth/options";
 
 export default async function BlogPost({ params }: { params: { id: string } }) {
-  const session = await getServerSession(options); // TODO: use this to redirect to login if not logged in when trying to comment
-
   const postComments = comments.filter((c) => c.postId === params.id);
+
+  const { id, title, content } = posts.find((p) => p.id === params.id)!;
 
   return (
     <main className={styles.main}>
-      <Post post={posts.find((p) => p.id === params.id)!}></Post>
+      <Post id={id} title={title} content={content}></Post>
       <Divider variant="fullWidth" style={{ margin: "20px 0" }}></Divider>
       <Paper style={{ padding: "40px 20px", width: "100%" }}>
         <NewComment postId={params.id} />

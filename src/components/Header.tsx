@@ -50,9 +50,9 @@ export default async function Header({ title }: HeaderProps) {
               </Button>
             </Link>
 
-            <Link href="/api/auth/verify-request?callbackUrl=/">
+            <Link href="/register">
               <Button variant="contained" size="small">
-                Register (TODO)
+                Register
               </Button>
             </Link>
           </Box>

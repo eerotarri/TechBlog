@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import users from "@/content/users.json";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -29,18 +30,13 @@ export const options: NextAuthOptions = {
         // This is where you need to retrieve user data
         // to verify with credentials
         // Docs: https://next-auth.js.org/configuration/providers/credentials
-        const user = {
-          id: "1",
-          name: "admin",
-          password: "admin",
-          email: "admin@example.com",
-        };
+        const user = users.find((user) => user.name === credentials?.username);
 
         if (
-          credentials?.username === user.name &&
-          credentials?.password === user.password
+          credentials?.username === user?.name &&
+          credentials?.password === user?.password
         ) {
-          return user;
+          return user || null;
         } else {
           return null;
         }

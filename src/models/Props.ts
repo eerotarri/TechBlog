@@ -28,3 +28,12 @@ export interface NewCommentProps {
 export interface GetImageProps {
   imageId: string;
 }
+
+export interface UserProps {
+  id: string;
+  name?: string;
+  email?: string;
+  image?: string;
+  password?: string;
+  salt?: string;
+}

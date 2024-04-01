@@ -1,0 +1,18 @@
+[
+  {
+    "id": "d0b9b0b2-ae15-47bf-adb0-a83e6408359a",
+    "name": "admin",
+    "email": "",
+    "image": "",
+    "password": "admin",
+    "salt": "salt"
+  },
+  {
+    "id": "32665a53-9484-4cc8-97ad-edc268a3323d",
+    "name": "Test Account",
+    "email": "",
+    "image": "",
+    "password": "password123",
+    "salt": "salt"
+  }
+]

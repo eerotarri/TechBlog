@@ -13,10 +13,20 @@ import { Grid } from "@mui/material";
 export default function Blog() {
   return (
     <main className={styles.main}>
-      <Link href={"/post/new"} style={{ margin: "200px" }}>
-        New post
-      </Link>
       <Grid container maxWidth="lg" spacing={8}>
+        <Grid item>
+          <Link
+            href={"/post/new"}
+            style={{
+              backgroundColor: "skyblue",
+              padding: "30px",
+              borderRadius: "5px",
+              color: "black",
+            }}
+          >
+            New post
+          </Link>
+        </Grid>
         {posts
           .map((post) => (
             <Grid item xs={12} md={12} lg={12}>

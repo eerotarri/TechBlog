@@ -1,18 +1,22 @@
 "use client";
 
 import { Button, Container, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
+import HTMLBlock from "@components/HTMLBlock";
 
 function NewPost() {
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState({});
+  const [blockCount, setBlockCount] = useState(0);
 
   const handlePost = () => {
-    console.log("Post");
+    const contentString = Object.values(content).join("");
+
+    console.log(contentString);
 
     const newPost = {
       title,
-      content,
+      content: contentString,
       timestamp: new Date().toISOString(),
     };
 
@@ -26,16 +30,27 @@ function NewPost() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.name === "title"
-      ? setTitle(e.target.value)
-      : setContent(e.target.value);
+    const { name, value } = e.target;
+
+    name === "title"
+      ? setTitle(value)
+      : setContent({
+          ...content,
+          [name]: value,
+        });
 
     console.log(title, content);
   };
 
+  function handleNewBlock() {
+    setBlockCount(blockCount + 1);
+    setContent({ ...content, [`block${blockCount}`]: "" });
+  }
+
   return (
     <Container sx={{ marginTop: "10vh" }}>
       <TextField
+        key={-1}
         name="title"
         label="Title"
         onChange={handleChange}
@@ -47,24 +62,17 @@ function NewPost() {
           borderRadius: "4px",
         }}
       ></TextField>
-      <TextField
-        name="content"
-        label="Post as HTML"
-        onChange={handleChange}
-        variant="outlined"
-        fullWidth
-        multiline
-        rows={20}
-        style={{
-          backgroundColor: "aliceblue",
-          borderRadius: "4px",
-        }}
-      ></TextField>
+      {Object.keys(content).map((key) => (
+        <HTMLBlock key={key} name={key} handleChange={handleChange} />
+      ))}
       <Button
-        onClick={handlePost}
+        onClick={handleNewBlock}
         variant="contained"
-        sx={{ marginTop: "10px" }}
+        sx={{ marginRight: "10px" }}
       >
+        New Block
+      </Button>
+      <Button onClick={handlePost} variant="contained">
         Post
       </Button>
     </Container>

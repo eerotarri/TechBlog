@@ -2,6 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import users from "@/content/users.json";
+import { validateCredentials } from "@/lib/authUtils";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -33,8 +34,10 @@ export const options: NextAuthOptions = {
         const user = users.find((user) => user.name === credentials?.username);
 
         if (
-          credentials?.username === user?.name &&
-          credentials?.password === user?.password
+          validateCredentials(
+            credentials?.username as string,
+            credentials?.password as string
+          )
         ) {
           return user || null;
         } else {

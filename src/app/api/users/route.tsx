@@ -4,7 +4,8 @@ import fs from "fs";
 import { UserProps } from "@/models/Props";
 import { CONTENT_PATH } from "@/lib/paths";
 import { NextResponse } from "next/server";
-import { v4 as uuidv4 } from "uuid";
+import { encryptPassword } from "@/lib/authUtils";
+import { randomUUID } from "crypto";
 
 export async function POST(req: Request) {
   const userList: UserProps[] = users;
@@ -18,12 +19,11 @@ export async function POST(req: Request) {
 
     if (username && password) {
       const newUser = {
-        id: uuidv4(),
+        id: randomUUID(),
         name: username,
         email: "",
         image: "",
-        password: password,
-        salt: "salt",
+        ...encryptPassword(password),
       };
 
       userList.push(newUser);

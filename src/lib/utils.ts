@@ -43,20 +43,6 @@ export async function getClientSession() {
   return session;
 }
 
-export function generateCommentId(): string {
-  const lastComment = comments[comments.length - 1];
-  const lastId = parseInt(lastComment.id);
-  const newId = (lastId + 1).toString();
-  return newId;
-}
-
-export function generatePostId(): string {
-  const lastPost = posts[posts.length - 1];
-  const lastId = parseInt(lastPost.id);
-  const newId = (lastId + 1).toString();
-  return newId;
-}
-
 export async function streamToJSON(stream: ReadableStream<Uint8Array>) {
   const reader = stream.getReader();
   const decoder = new TextDecoder();

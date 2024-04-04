@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import posts from "@/content/posts.json";
-import { generatePostId, streamToJSON } from "@/lib/utils";
 import { PostProps } from "@/models/Props";
 import fs from "fs";
 import { CONTENT_PATH } from "@/lib/paths";
+import { randomUUID } from "crypto";
 
 export async function POST(req: Request) {
   const { title, content } = await req.json();
 
   const newPost: PostProps = {
-    id: generatePostId(),
+    id: randomUUID(),
     title: title,
     content: content,
   };

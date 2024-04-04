@@ -10,7 +10,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { getClientSession } from "@lib/utils";
-import { generateCommentId } from "@lib/utils";
 
 function NewComment({ postId }: NewCommentProps) {
   const session = getClientSession();

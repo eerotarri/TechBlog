@@ -28,7 +28,7 @@ export const validateCredentials = (
       .digest(ENCODING);
 
     return hashedPassword === hashedAttempt;
-  }
+  } 
 
   return false;
 };

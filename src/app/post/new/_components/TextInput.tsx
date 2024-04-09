@@ -1,18 +1,19 @@
+import { TextBlockProps } from "@/models/Props";
 import TextField from "@mui/material/TextField";
 
-function HTMLBlock({
+export default function TextInput({
   name,
   handleChange,
   content,
 }: {
   name: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  content: string;
+  content: TextBlockProps;
 }) {
   return (
     <TextField
       name={name}
-      label="HTML Block"
+      label={content.blockType + " Block"}
       onChange={handleChange}
       variant="outlined"
       fullWidth
@@ -25,5 +26,3 @@ function HTMLBlock({
     ></TextField>
   );
 }
-
-export default HTMLBlock;

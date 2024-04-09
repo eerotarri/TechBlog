@@ -37,3 +37,23 @@ export interface UserProps {
   password?: string;
   salt?: string;
 }
+
+export const blockTypes = ["p", "h1", "h2", "h3", "h4", "h5", "h6"];
+
+type AllowedBlockTypes<T extends string[]> = T[number];
+export type BlockType = AllowedBlockTypes<typeof blockTypes>;
+
+export interface ImageProps {
+  id: string;
+  src: string;
+  alt?: string;
+}
+
+export interface TextBlockProps {
+  blockType: BlockType;
+  value: string;
+}
+
+export type HTMLBlockProps = ImageProps | TextBlockProps;
+
+export type ContentProps = Record<string, HTMLBlockProps>;

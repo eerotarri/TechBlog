@@ -1,17 +1,22 @@
+"use server";
+
 import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import Link from "next/link";
+
+import { getServerSession } from "next-auth/next";
+
+import { options } from "@auth/options";
 
 interface HeaderProps {
   title: string;
 }
 
-export default function Header(props: HeaderProps) {
-  const { title } = props;
+export default async function Header({ title }: HeaderProps) {
+  const session = await getServerSession(options);
 
   return (
     <>
@@ -37,10 +42,27 @@ export default function Header(props: HeaderProps) {
             {title}
           </Typography>
         </Link>
+        {!session ? (
+          <Box>
+            <Link href="/api/auth/signin?callbackUrl=/">
+              <Button variant="contained" size="small" sx={{ margin: "0 5px" }}>
+                Sign in
+              </Button>
+            </Link>
 
-        <Button variant="contained" size="small">
-          Sign up
-        </Button>
+            <Link href="/register">
+              <Button variant="contained" size="small">
+                Register
+              </Button>
+            </Link>
+          </Box>
+        ) : (
+          <Link href="/api/auth/signout?callbackUrl=/">
+            <Button variant="contained" size="small" sx={{ margin: "0 5px" }}>
+              Sign out
+            </Button>
+          </Link>
+        )}
       </Toolbar>
     </>
   );

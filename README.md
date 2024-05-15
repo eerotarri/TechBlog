@@ -20,17 +20,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Create NextAuth secrets
 
-To learn more about Next.js, take a look at the following resources:
+To enable authentication, you need to create a `.env.local` file in the root of the project with the following variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NEXTAUTH_SECRET=<your_secret>
+NEXTAUTH_URL=http://localhost:3000/api/auth
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The secret can be anyt string you want, but it should be long and random.
+Additionally you can add Google OAuth credentials to enable Google authentication following the instructions in the [NextAuth.js documentation](https://next-auth.js.org/providers/google) and adding the variables:
 
-## Deploy on Vercel
+```bash
+GOOGLE_CLIENT_ID=<your_google_id>
+GOOGLE_CLIENT_SECRET=<your_google_secret>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+That is all the set up necessary to get started with this project.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### **Everything else is sandboxed and ready to be used.**

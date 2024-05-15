@@ -18,7 +18,7 @@ function TitleField({
         marginBottom: "10px",
         borderRadius: "4px",
       }}
-    ></TextField>
+    />
   );
 }
 

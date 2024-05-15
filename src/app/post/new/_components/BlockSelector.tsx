@@ -14,17 +14,18 @@ function BlockSelector({
       <Select
         value={blockType}
         onChange={(e) => setBlockType(e.target.value)}
-        children={blockTypes.map((type) => (
-          <MenuItem key={type} value={type}>
-            Block type: {type.toLocaleUpperCase()}
-          </MenuItem>
-        ))}
         style={{
           backgroundColor: "aliceblue",
           borderRadius: "4px",
           marginBottom: "10px",
         }}
-      ></Select>
+      >
+        {blockTypes.map((type) => (
+          <MenuItem key={type} value={type}>
+            Block type: {type.toLocaleUpperCase()}
+          </MenuItem>
+        ))}
+      </Select>
     </FormControl>
   );
 }

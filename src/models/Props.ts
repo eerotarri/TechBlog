@@ -2,6 +2,7 @@ export interface PostProps {
   id: string;
   title: string;
   content: string;
+  image?: string;
   author?: string;
   timestamp?: string;
 }
@@ -43,16 +44,17 @@ export const blockTypes = ["p", "h1", "h2", "h3", "h4", "h5", "h6"];
 type AllowedBlockTypes<T extends string[]> = T[number];
 export type BlockType = AllowedBlockTypes<typeof blockTypes>;
 
-export interface ImageProps {
+export type ImageProps = {
   id: string;
-  src: string;
+  src?: string;
+  image?: File;
   alt?: string;
-}
+};
 
-export interface TextBlockProps {
+export type TextBlockProps = {
   blockType: BlockType;
   value: string;
-}
+};
 
 export type HTMLBlockProps = ImageProps | TextBlockProps;
 

@@ -1,6 +1,5 @@
 import { getSession } from "next-auth/react";
-import comments from "@/content/comments.json";
-import posts from "@/content/posts.json";
+import sanitizeHtml from "sanitize-html";
 
 /**
  *
@@ -55,4 +54,15 @@ export async function streamToJSON(stream: ReadableStream<Uint8Array>) {
     result += decoder.decode(value, { stream: true });
   }
   return JSON.parse(result);
+}
+
+export function sanitize(dirty: string) {
+  // Defaults and usage in: https://www.npmjs.com/package/sanitize-html
+
+  const allowedTags = ["b", "i", "em", "strong", "ul", "ol", "li", "br"];
+
+  return sanitizeHtml(dirty, {
+    allowedTags,
+    allowedAttributes: false,
+  });
 }

@@ -19,6 +19,7 @@ export async function POST(req: Request) {
 
   return NextResponse.json({
     message: "Post successfully created!",
+    id: newPost.id,
     status: 200,
   });
 }

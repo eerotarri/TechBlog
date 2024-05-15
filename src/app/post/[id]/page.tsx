@@ -1,6 +1,7 @@
 // import boilerplate
 import { Paper, Typography, Grid, Divider } from "@mui/material";
 import { getServerSession } from "next-auth/next";
+import Image from "next/image";
 
 // import components
 import Post from "@/components/Post";
@@ -14,6 +15,7 @@ import styles from "./page.module.css";
 import posts from "@/content/posts.json";
 import comments from "@/content/comments.json";
 import { options } from "@auth/options";
+import { CONTENT_PATH } from "@/lib/paths";
 
 export default async function BlogPost({ params }: { params: { id: string } }) {
   const postComments = comments.filter((c) => c.postId === params.id);
